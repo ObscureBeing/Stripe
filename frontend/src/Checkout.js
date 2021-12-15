@@ -19,6 +19,7 @@ function Checkout() {
           const confirmPayment = await stripe.confirmCardPayment(data.clientSecret, {
               payment_method: { card: cardElement }
           });    
+          console.log(confirmPayment);
           const {paymentIntent} = confirmPayment;
           if(paymentIntent.status === 'succeeded') alert('Payment Successful!');
           else alert('Payment failed!')
@@ -26,14 +27,14 @@ function Checkout() {
             console.error(err);
             alert('Payment failed!')
         }
-    }
+    };
 
     return (
         <div className="checkout">
             <CardElement/>
             <button onClick={pay}>Pay</button>
         </div>
-    )
+    );
 }
 
 export default Checkout

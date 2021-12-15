@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.post('/pay', async (req, res) => {
     try {
-        const amount = 2000;
+        const amount = 20000;
         const paymentIntent = await stripe.paymentIntents.create({
             amount,
             currency: 'inr',
@@ -36,6 +36,6 @@ app.post('/stripe', (req, res) => {
         console.log('${req.body.data.metadata.name} succeeded payment!')
         // fulfillment
     }
-})
+});
 
 app.listen(5000, () => console.log('Server is running on port 5000'))
